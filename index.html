@@ -69,11 +69,21 @@
     overflow: hidden;
   }
   header{
-    display:flex; gap:8px; align-items:center; padding:10px;
-    background:rgba(255,255,255,.04); border-bottom:1px solid rgba(255,255,255,.08);
+    display:flex;
+    gap:8px;
+    align-items:center;
+    padding:10px;
+    background:rgba(255,255,255,.04);
+    border-bottom:1px solid rgba(255,255,255,.08);
     position:relative;
-    flex-shrink: 0;
-  }
+    flex-shrink:0;
+    transition: transform 0.3s ease;
+}
+
+/* hide header */
+header.hide{
+    transform: translateY(-100%);
+}
   .hamburger{
     width:44px;height:40px; border-radius:12px; background:var(--key);
     display:grid; place-items:center; cursor:pointer; border:1px solid rgba(255,255,255,.08);
@@ -639,6 +649,16 @@ input[type="range"] {
   </div>
 
 <script>
+	const header = document.querySelector("header");
+const editor = document.querySelector("textarea");
+
+editor.addEventListener("focus", () => {
+  header.classList.add("hide");
+});
+
+editor.addEventListener("blur", () => {
+  header.classList.remove("hide");
+});
 /* ------------------ Helper: dynamic theme CSS loader ------------------ */
 const themeCDN = (name)=>{
   const map = {
