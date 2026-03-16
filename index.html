@@ -7,6 +7,8 @@
   <meta name="google-site-verification" content="n0QZ_Ds1yBHuALmSs4iLYOeIzK8_1_AmQXJ6p2sSYuI" />
 
 <meta name="description" content="Free online HTML, CSS & JavaScript editor. Write, run and preview code instantly on mobile or desktop. No login required.">
+	<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0b1a33">
 
 <!-- CodeMirror core + modes -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
@@ -69,20 +71,23 @@
     overflow: hidden;
   }
   header{
-    display:flex;
-    gap:8px;
-    align-items:center;
-    padding:10px;
-    background:rgba(255,255,255,.04);
-    border-bottom:1px solid rgba(255,255,255,.08);
-    position:relative;
-    flex-shrink:0;
-    transition: transform 0.3s ease;
+  display:flex;
+  gap:8px;
+  align-items:center;
+  padding:10px;
+  background:rgba(255,255,255,.04);
+  border-bottom:1px solid rgba(255,255,255,.08);
+
+  position:sticky;
+  top:0;
+
+  flex-shrink:0;
+  transition: transform 0.3s ease;
 }
 
-/* hide header */
 header.hide{
-    transform: translateY(-100%);
+  transform: translateY(-120%);
+}
 }
   .hamburger{
     width:44px;height:40px; border-radius:12px; background:var(--key);
@@ -2105,6 +2110,11 @@ initMobileView();
 
 // Listen for resize events
 window.addEventListener('resize', initMobileView);
+	const header = document.querySelector("header");
+
+document.addEventListener("keydown", () => {
+  header.classList.add("hide");
+});
 
 </script>
 </body>
